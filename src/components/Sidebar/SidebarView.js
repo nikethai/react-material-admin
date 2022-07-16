@@ -8,6 +8,8 @@ import {
   Home as HomeIcon,
   NotificationsNone as NotificationsIcon,
   FormatSize as TypographyIcon,
+  Group as GroupIcon,
+  Assignment as AssignmentIcon,
   FilterNone as UIElementsIcon,
   BorderAll as TableIcon,
   QuestionAnswer as SupportIcon,
@@ -22,9 +24,8 @@ import Dot from './components/Dot';
 
 const structure = [
   { id: 0, label: 'Dashboard', link: '/app/dashboard', icon: <HomeIcon /> },
-  { id: 1, label: 'Typography', link: '/app/typography', icon: <TypographyIcon /> },
-  { id: 2, label: 'Tables', link: '/app/tables', icon: <TableIcon /> },
-  { id: 3, label: 'Notifications', link: '/app/notifications', icon: <NotificationsIcon />},
+  { id: 2, label: 'Tables', link: '/app/tables', icon: <GroupIcon /> },
+  { id: 3, label: 'Jobs', link: '/app/jobs', icon: <AssignmentIcon /> },
   {
     id: 4,
     label: 'UI Elements',
@@ -50,31 +51,31 @@ const structure = [
 
 const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermanent, location }) => {
   return (
-    <Drawer
-      variant={isPermanent ? 'permanent' : 'temporary'}
-      className={classNames(classes.drawer, {
-        [classes.drawerOpen]: isSidebarOpened,
-        [classes.drawerClose]: !isSidebarOpened,
-      })}
-      classes={{
-        paper: classNames(classes.drawer, {
-          [classes.drawerOpen]: isSidebarOpened,
-          [classes.drawerClose]: !isSidebarOpened,
-        }),
-      }}
-      open={isSidebarOpened}
-    >
-      <div className={classes.mobileBackButton}>
-        <IconButton
-          onClick={toggleSidebar}
-        >
-          <ArrowBackIcon classes={{ root: classNames(classes.headerIcon, classes.headerIconCollapse) }} />
-        </IconButton>
-      </div>
-      <List className={classes.sidebarList}>
-        {structure.map(link => <SidebarLink key={link.id} location={location} isSidebarOpened={isSidebarOpened} {...link} />)}
-      </List>
-    </Drawer>
+      <Drawer
+          variant={isPermanent ? 'permanent' : 'temporary'}
+          className={classNames(classes.drawer, {
+            [classes.drawerOpen]: isSidebarOpened,
+            [classes.drawerClose]: !isSidebarOpened,
+          })}
+          classes={{
+            paper: classNames(classes.drawer, {
+              [classes.drawerOpen]: isSidebarOpened,
+              [classes.drawerClose]: !isSidebarOpened,
+            }),
+          }}
+          open={isSidebarOpened}
+      >
+        <div className={classes.mobileBackButton}>
+          <IconButton
+              onClick={toggleSidebar}
+          >
+            <ArrowBackIcon classes={{ root: classNames(classes.headerIcon, classes.headerIconCollapse) }} />
+          </IconButton>
+        </div>
+        <List className={classes.sidebarList}>
+          {structure.map(link => <SidebarLink key={link.id} location={location} isSidebarOpened={isSidebarOpened} {...link} />)}
+        </List>
+      </Drawer>
   );
 }
 

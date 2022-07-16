@@ -27,7 +27,7 @@ const mock = {
   ],
   bigStat: [
     {
-      product: "Light Blue",
+      product: "Bài đăng",
       total: {
         monthly: 4232,
         weekly: 1465,
@@ -47,7 +47,7 @@ const mock = {
       }
     },
     {
-      product: "Sing App",
+      product: "Thành viên mới",
       total: {
         monthly: 754,
         weekly: 180,
@@ -93,7 +93,7 @@ const mock = {
       icon: "thumbs-up",
       color: "primary",
       content:
-        'Ken <span className="fw-semi-bold">accepts</span> your invitation'
+          'Ken <span className="fw-semi-bold">accepts</span> your invitation'
     },
     {
       id: 1,
@@ -124,60 +124,38 @@ const mock = {
       icon: "bell",
       color: "info",
       content:
-        '15 <span className="fw-semi-bold">Notifications</span> from Social Apps'
+          '15 <span className="fw-semi-bold">Notifications</span> from Social Apps'
     }
   ],
   table: [
     {
       id: 0,
-      name: "Mark Otto",
-      email: "ottoto@wxample.com",
-      product: "ON the Road",
-      price: "$25 224.2",
-      date: "11 May 2017",
-      city: "Otsego",
-      status: "Sent"
+      tên: "Thái Thoại Thông",
+      email: "thongtt@fpt.edu.vn",
+      sđt: "0123456789",
+      status: "Online"
     },
     {
       id: 1,
-      name: "Jacob Thornton",
-      email: "thornton@wxample.com",
-      product: "HP Core i7",
-      price: "$1 254.2",
-      date: "4 Jun 2017",
-      city: "Fivepointville",
-      status: "Sent"
+      tên: "Huỳnh Ngọc Thanh Lam",
+      email: "lamhnt@fpt.edu.vn",
+      sđt: "0123456789",
+      status: "Online"
     },
     {
       id: 2,
-      name: "Larry the Bird",
-      email: "bird@wxample.com",
-      product: "Air Pro",
-      price: "$1 570.0",
-      date: "27 Aug 2017",
-      city: "Leadville North",
-      status: "Pending"
+      tên: "Đỗ Minh Đức",
+      email: "ducdm@fpt.edu.vn",
+      sđt: "0123456789",
+      status: "Online"
     },
     {
       id: 3,
-      name: "Joseph May",
-      email: "josephmay@wxample.com",
-      product: "Version Control",
-      price: "$5 224.5",
-      date: "19 Feb 2018",
-      city: "Seaforth",
-      status: "Declined"
+      tên: "Vũ Đình Hải",
+      email: "haivd@fpt.edu.vn",
+      sđt: "0123456789",
+      status: "Online"
     },
-    {
-      id: 4,
-      name: "Peter Horadnia",
-      email: "horadnia@wxample.com",
-      product: "Let's Dance",
-      price: "$43 594.7",
-      date: "1 Mar 2018",
-      city: "Hanoverton",
-      status: "Sent"
-    }
   ]
 };
 

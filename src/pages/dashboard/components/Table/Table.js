@@ -10,7 +10,7 @@ import {
 import useStyles from "../../styles";
 
 const states = {
-  sent: "success",
+  online: "success",
   pending: "warning",
   declined: "secondary",
 };
@@ -21,29 +21,27 @@ export default function TableComponent({ data }) {
   keys.shift(); // delete "id" key
 
   return (
-    <Table className="mb-0">
-      <TableHead>
-        <TableRow>
-          {keys.map(key => (
-            <TableCell key={key}>{key}</TableCell>
-          ))}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {data.map(({ id, name, email, product, price, date, city, status }) => (
-          <TableRow key={id}>
-            <TableCell className="pl-3 fw-normal">{name}</TableCell>
-            <TableCell>{email}</TableCell>
-            <TableCell>{product}</TableCell>
-            <TableCell>{price}</TableCell>
-            <TableCell>{date}</TableCell>
-            <TableCell>{city}</TableCell>
-            <TableCell>
-              <Chip label={status} classes={{root: classes[states[status.toLowerCase()]]}}/>
-            </TableCell>
+      <Table className="mb-0">
+        <TableHead>
+          <TableRow>
+            {keys.map(key => (
+                <TableCell key={key}>{key}</TableCell>
+            ))}
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHead>
+        <TableBody>
+          {/*{data.map(({ id, name, email, product, price, date, city, status }) => (*/}
+          {data.map(({ id, tên, email, sđt, status }) => (
+              <TableRow key={id}>
+                <TableCell className="pl-3 fw-normal">{tên}</TableCell>
+                <TableCell>{email}</TableCell>
+                <TableCell>{sđt}</TableCell>
+                <TableCell>
+                  <Chip label={status} classes={{root: classes[states[status.toLowerCase()]]}}/>
+                </TableCell>
+              </TableRow>
+          ))}
+        </TableBody>
+      </Table>
   );
 }

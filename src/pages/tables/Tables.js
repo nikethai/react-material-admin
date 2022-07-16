@@ -12,23 +12,21 @@ import Table from "../dashboard/components/Table/Table";
 import mock from "../dashboard/mock";
 
 const datatableData = [
-  ["Joe James", "Example Inc.", "Yonkers", "NY"],
-  ["John Walsh", "Example Inc.", "Hartford", "CT"],
-  ["Bob Herm", "Example Inc.", "Tampa", "FL"],
-  ["James Houston", "Example Inc.", "Dallas", "TX"],
-  ["Prabhakar Linwood", "Example Inc.", "Hartford", "CT"],
-  ["Kaui Ignace", "Example Inc.", "Yonkers", "NY"],
-  ["Esperanza Susanne", "Example Inc.", "Hartford", "CT"],
-  ["Christian Birgitte", "Example Inc.", "Tampa", "FL"],
-  ["Meral Elias", "Example Inc.", "Hartford", "CT"],
-  ["Deep Pau", "Example Inc.", "Yonkers", "NY"],
-  ["Sebastiana Hani", "Example Inc.", "Dallas", "TX"],
-  ["Marciano Oihana", "Example Inc.", "Yonkers", "NY"],
-  ["Brigid Ankur", "Example Inc.", "Dallas", "TX"],
-  ["Anna Siranush", "Example Inc.", "Yonkers", "NY"],
-  ["Avram Sylva", "Example Inc.", "Hartford", "CT"],
-  ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
-  ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
+  ["Nguyễn Thùy Linh", "linhnt@fpt.edu.vn", "0123456789", "Active"],
+  ["Lê Nhật Quang", "quangln@fpt.edu.vn", "0123456789", "Active"],
+  ["Phạm Hoàng Minh", "minhph@fpt.edu.vn", "0123456789", "Active"],
+  ["Trần Đăng Khoa", "khoatd@fpt.edu.vn", "0123456789", "Active"],
+  ["Phạm Văn Linh", "linhpv@fpt.edu.vn", "0123456789", "Active"],
+  ["Nguyễn Tuấn Anh", "anhnt@fpt.edu.vn", "0123456789", "Active"],
+  ["Vũ Minh Đăng", "dangvm@fpt.edu.vn", "0123456789", "Active"],
+  ["Phạm Kiều Trinh", "trinhpk@fpt.edu.vn", "0123456789", "Active"],
+  ["Trần Anh Đạt", "datta@fpt.edu.vn", "0123456789", "Active"],
+  ["Lý Minh Quang", "quanglm@fpt.edu.vn", "0123456789", "Active"],
+  ["Hồ Vĩnh Tuệ", "tuehv@fpt.edu.vn", "0123456789", "Active"],
+  ["Đoàn Trúc Mai Linh", "linhdtm@fpt.edu.vn", "0123456789", "Active"],
+  ["Phạm Mỹ Linh", "linhpm@fpt.edu.vn", "0123456789", "Active"],
+  ["Trần Anh Tài", "taita@fpt.edu.vn", "0123456789", "Active"],
+  ["Đoàn Minh Tâm", "tamdm@fpt.edu.vn", "0123456789", "Active"],
 ];
 
 const useStyles = makeStyles(theme => ({
@@ -40,25 +38,25 @@ const useStyles = makeStyles(theme => ({
 export default function Tables() {
   const classes = useStyles();
   return (
-    <>
-      <PageTitle title="Tables" />
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <MUIDataTable
-            title="Employee List"
-            data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
-            options={{
-              filterType: "checkbox",
-            }}
-          />
+      <>
+        <PageTitle title="Quản lý tài khoản" />
+        <Grid container spacing={4}>
+          <Grid item xs={12}>
+            <MUIDataTable
+                title="Danh sách tài khoản"
+                data={datatableData}
+                columns={["Tên", "Email", "SĐT", "Status"]}
+                options={{
+                  filterType: "checkbox",
+                }}
+            />
+          </Grid>
+          {/*<Grid item xs={12}>*/}
+          {/*  <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>*/}
+          {/*    <Table data={mock.table} />*/}
+          {/*  </Widget>*/}
+          {/*</Grid>*/}
         </Grid>
-        <Grid item xs={12}>
-          <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>
-            <Table data={mock.table} />
-          </Widget>
-        </Grid>
-      </Grid>
-    </>
+      </>
   );
 }

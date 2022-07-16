@@ -27,42 +27,42 @@ function Badge({ children, colorBrightness, color, ...props }) {
   });
 
   return (
-    <Styled>
-      {styledProps => (
-        <BadgeBase
-          classes={{
-            badge: classnames(classes.badge, styledProps.classes.badge),
-          }}
-          {...props}
-        >
-          {children}
-        </BadgeBase>
-      )}
-    </Styled>
+      <Styled>
+        {styledProps => (
+            <BadgeBase
+                classes={{
+                  badge: classnames(classes.badge, styledProps.classes.badge),
+                }}
+                {...props}
+            >
+              {children}
+            </BadgeBase>
+        )}
+      </Styled>
   );
 }
 
 function Typography({
-  children,
-  weight,
-  size,
-  colorBrightness,
-  color,
-  ...props
-}) {
+                      children,
+                      weight,
+                      size,
+                      colorBrightness,
+                      color,
+                      ...props
+                    }) {
   var theme = useTheme();
 
   return (
-    <TypographyBase
-      style={{
-        color: getColor(color, theme, colorBrightness),
-        fontWeight: getFontWeight(weight),
-        fontSize: getFontSize(size, props.variant, theme),
-      }}
-      {...props}
-    >
-      {children}
-    </TypographyBase>
+      <TypographyBase
+          style={{
+            color: getColor(color, theme, colorBrightness),
+            fontWeight: getFontWeight(weight),
+            fontSize: getFontSize(size, props.variant, theme),
+          }}
+          {...props}
+      >
+        {children}
+      </TypographyBase>
   );
 }
 
@@ -96,26 +96,26 @@ function Button({ children, color, className, ...props }) {
   });
 
   return (
-    <Styled>
-      {({ classes }) => (
-        <ButtonBase
-          classes={{
-            contained: classes.contained,
-            root: classes.root,
-            outlined: classes.outlined,
-          }}
-          {...props}
-          className={classnames(
-            {
-              [classes.select]: props.select,
-            },
-            className,
-          )}
-        >
-          {children}
-        </ButtonBase>
-      )}
-    </Styled>
+      <Styled>
+        {({ classes }) => (
+            <ButtonBase
+                classes={{
+                  contained: classes.contained,
+                  root: classes.root,
+                  outlined: classes.outlined,
+                }}
+                {...props}
+                className={classnames(
+                    {
+                      [classes.select]: props.select,
+                    },
+                    className,
+                )}
+            >
+              {children}
+            </ButtonBase>
+        )}
+      </Styled>
   );
 }
 
@@ -164,9 +164,9 @@ function getFontSize(size, variant = "", theme) {
   }
 
   var defaultSize =
-    variant && theme.typography[variant]
-      ? theme.typography[variant].fontSize
-      : theme.typography.fontSize + "px";
+      variant && theme.typography[variant]
+          ? theme.typography[variant].fontSize
+          : theme.typography.fontSize + "px";
 
   return `calc(${defaultSize} * ${multiplier})`;
 }

@@ -52,62 +52,62 @@ export default function Notification({ variant, ...props }) {
     },
     style: {
       color:
-        variant !== "contained" &&
-        theme.palette[props.color] &&
-        theme.palette[props.color].main,
+          variant !== "contained" &&
+          theme.palette[props.color] &&
+          theme.palette[props.color].main,
     },
   });
 
   return (
-    <div
-      className={classnames(classes.notificationContainer, props.className, {
-        [classes.notificationContained]: variant === "contained",
-        [classes.notificationContainedShadowless]: props.shadowless,
-      })}
-      style={{
-        backgroundColor:
-          variant === "contained" &&
-          theme.palette[props.color] &&
-          theme.palette[props.color].main,
-      }}
-    >
       <div
-        className={classnames(classes.notificationIconContainer, {
-          [classes.notificationIconContainerContained]: variant === "contained",
-          [classes.notificationIconContainerRounded]: variant === "rounded",
-        })}
-        style={{
-          backgroundColor:
-            variant === "rounded" &&
-            theme.palette[props.color] &&
-            tinycolor(theme.palette[props.color].main)
-              .setAlpha(0.15)
-              .toRgbString(),
-        }}
-      >
-        {iconWithStyles}
-      </div>
-      <div className={classes.messageContainer}>
-        <Typography
-          className={classnames({
-            [classes.containedTypography]: variant === "contained",
+          className={classnames(classes.notificationContainer, props.className, {
+            [classes.notificationContained]: variant === "contained",
+            [classes.notificationContainedShadowless]: props.shadowless,
           })}
-          variant={props.typographyVariant}
-          size={variant !== "contained" && !props.typographyVariant && "md"}
+          style={{
+            backgroundColor:
+                variant === "contained" &&
+                theme.palette[props.color] &&
+                theme.palette[props.color].main,
+          }}
+      >
+        <div
+            className={classnames(classes.notificationIconContainer, {
+              [classes.notificationIconContainerContained]: variant === "contained",
+              [classes.notificationIconContainerRounded]: variant === "rounded",
+            })}
+            style={{
+              backgroundColor:
+                  variant === "rounded" &&
+                  theme.palette[props.color] &&
+                  tinycolor(theme.palette[props.color].main)
+                      .setAlpha(0.15)
+                      .toRgbString(),
+            }}
         >
-          {props.message}
-        </Typography>
-        {props.extraButton && props.extraButtonClick && (
-          <Button
-            onClick={props.extraButtonClick}
-            disableRipple
-            className={classes.extraButton}
+          {iconWithStyles}
+        </div>
+        <div className={classes.messageContainer}>
+          <Typography
+              className={classnames({
+                [classes.containedTypography]: variant === "contained",
+              })}
+              variant={props.typographyVariant}
+              size={variant !== "contained" && !props.typographyVariant && "md"}
           >
-            {props.extraButton}
-          </Button>
-        )}
+            {props.message}
+          </Typography>
+          {props.extraButton && props.extraButtonClick && (
+              <Button
+                  onClick={props.extraButtonClick}
+                  disableRipple
+                  className={classes.extraButton}
+              >
+                {props.extraButton}
+              </Button>
+          )}
+        </div>
       </div>
-    </div>
   );
 }
 

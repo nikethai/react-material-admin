@@ -26,15 +26,15 @@ export default function Dot({ size, color }) {
   var theme = useTheme();
 
   return (
-    <div
-      className={classnames(classes.dotBase, {
-        [classes.dotLarge]: size === "large",
-        [classes.dotSmall]: size === "small",
-      })}
-      style={{
-        backgroundColor:
-          color && theme.palette[color] && theme.palette[color].main,
-      }}
-    />
+      <div
+          className={classnames(classes.dotBase, {
+            [classes.dotLarge]: size === "large",
+            [classes.dotSmall]: size === "small",
+          })}
+          style={{
+            backgroundColor:
+                color && theme.palette[color] && theme.palette[color].main,
+          }}
+      />
   );
 }

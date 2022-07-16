@@ -79,221 +79,221 @@ const notifications = [
 ];
 
 const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
-  <AppBar position="fixed" className={classes.appBar}>
-    <Toolbar className={classes.toolbar}>
-      <IconButton
-        color="inherit"
-        onClick={toggleSidebar}
-        className={classNames(
-          classes.headerMenuButton,
-          classes.headerMenuButtonCollapse
-        )}
-      >
-        {isSidebarOpened ? (
-          <ArrowBackIcon
-            classes={{
-              root: classNames(classes.headerIcon, classes.headerIconCollapse)
-            }}
-          />
-        ) : (
-          <MenuIcon
-            classes={{
-              root: classNames(classes.headerIcon, classes.headerIconCollapse)
-            }}
-          />
-        )}
-      </IconButton>
-      <Typography variant="h6" weight="medium" className={classes.logotype}>React Material Admin</Typography>
-      <div className={classes.grow} />
-      <div
-        className={classNames(classes.search, {
-          [classes.searchFocused]: props.isSearchOpen
-        })}
-      >
+    <AppBar position="fixed" className={classes.appBar}>
+      <Toolbar className={classes.toolbar}>
+        <IconButton
+            color="inherit"
+            onClick={toggleSidebar}
+            className={classNames(
+                classes.headerMenuButton,
+                classes.headerMenuButtonCollapse
+            )}
+        >
+          {isSidebarOpened ? (
+              <ArrowBackIcon
+                  classes={{
+                    root: classNames(classes.headerIcon, classes.headerIconCollapse)
+                  }}
+              />
+          ) : (
+              <MenuIcon
+                  classes={{
+                    root: classNames(classes.headerIcon, classes.headerIconCollapse)
+                  }}
+              />
+          )}
+        </IconButton>
+        <Typography variant="h6" weight="medium" className={classes.logotype}>React Material Admin</Typography>
+        <div className={classes.grow} />
         <div
-          className={classNames(classes.searchIcon, {
-            [classes.searchIconOpened]: props.isSearchOpen
-          })}
-          onClick={props.toggleSearch}
+            className={classNames(classes.search, {
+              [classes.searchFocused]: props.isSearchOpen
+            })}
         >
-          <SearchIcon classes={{ root: classes.headerIcon }} />
-        </div>
-        <InputBase
-          placeholder="Search…"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput
-          }}
-        />
-      </div>
-      <IconButton
-        color="inherit"
-        aria-haspopup="true"
-        aria-controls="mail-menu"
-        onClick={props.openNotificationsMenu}
-        className={classes.headerMenuButton}
-      >
-        <Badge
-          badgeContent={
-            props.isNotificationsUnread ? notifications.length : null
-          }
-          colortheme="warning"
-        >
-          <NotificationsIcon classes={{ root: classes.headerIcon }} />
-        </Badge>
-      </IconButton>
-      <IconButton
-        color="inherit"
-        aria-haspopup="true"
-        aria-controls="mail-menu"
-        onClick={props.openMailMenu}
-        className={classes.headerMenuButton}
-      >
-        <Badge
-          badgeContent={props.isMailsUnread ? messages.length : null}
-          color="secondary"
-        >
-          <MailIcon classes={{ root: classes.headerIcon }} />
-        </Badge>
-      </IconButton>
-      <IconButton
-        aria-haspopup="true"
-        color="inherit"
-        className={classes.headerMenuButton}
-        aria-controls="profile-menu"
-        onClick={props.openProfileMenu}
-      >
-        <AccountIcon classes={{ root: classes.headerIcon }} />
-      </IconButton>
-      <Menu
-        id="mail-menu"
-        open={Boolean(props.mailMenu)}
-        anchorEl={props.mailMenu}
-        onClose={props.closeMailMenu}
-        MenuListProps={{ className: classes.headerMenuList }}
-        className={classes.headerMenu}
-        classes={{ paper: classes.profileMenu }}
-        disableAutoFocusItem
-      >
-        <div className={classes.profileMenuUser}>
-          <Typography variant="h4" weight="medium">
-            New Messages
-          </Typography>
-          <Typography
-            className={classes.profileMenuLink}
-            component="a"
-            color="secondary"
+          <div
+              className={classNames(classes.searchIcon, {
+                [classes.searchIconOpened]: props.isSearchOpen
+              })}
+              onClick={props.toggleSearch}
           >
-            {messages.length} New Messages
-          </Typography>
+            <SearchIcon classes={{ root: classes.headerIcon }} />
+          </div>
+          <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+          />
         </div>
-        {messages.map(message => (
-          <MenuItem key={message.id} className={classes.messageNotification}>
-            <div className={classes.messageNotificationSide}>
-              <UserAvatar color={message.variant} name={message.name} />
-              <Typography size="sm" color="textSecondary">
-                {message.time}
-              </Typography>
-            </div>
-            <div
-              className={classNames(
-                classes.messageNotificationSide,
-                classes.messageNotificationBodySide
-              )}
+        <IconButton
+            color="inherit"
+            aria-haspopup="true"
+            aria-controls="mail-menu"
+            onClick={props.openNotificationsMenu}
+            className={classes.headerMenuButton}
+        >
+          <Badge
+              badgeContent={
+                props.isNotificationsUnread ? notifications.length : null
+              }
+              colortheme="warning"
+          >
+            <NotificationsIcon classes={{ root: classes.headerIcon }} />
+          </Badge>
+        </IconButton>
+        <IconButton
+            color="inherit"
+            aria-haspopup="true"
+            aria-controls="mail-menu"
+            onClick={props.openMailMenu}
+            className={classes.headerMenuButton}
+        >
+          <Badge
+              badgeContent={props.isMailsUnread ? messages.length : null}
+              color="secondary"
+          >
+            <MailIcon classes={{ root: classes.headerIcon }} />
+          </Badge>
+        </IconButton>
+        <IconButton
+            aria-haspopup="true"
+            color="inherit"
+            className={classes.headerMenuButton}
+            aria-controls="profile-menu"
+            onClick={props.openProfileMenu}
+        >
+          <AccountIcon classes={{ root: classes.headerIcon }} />
+        </IconButton>
+        <Menu
+            id="mail-menu"
+            open={Boolean(props.mailMenu)}
+            anchorEl={props.mailMenu}
+            onClose={props.closeMailMenu}
+            MenuListProps={{ className: classes.headerMenuList }}
+            className={classes.headerMenu}
+            classes={{ paper: classes.profileMenu }}
+            disableAutoFocusItem
+        >
+          <div className={classes.profileMenuUser}>
+            <Typography variant="h4" weight="medium">
+              New Messages
+            </Typography>
+            <Typography
+                className={classes.profileMenuLink}
+                component="a"
+                color="secondary"
             >
-              <Typography weight="medium" gutterBottom>
-                {message.name}
-              </Typography>
-              <Typography color="textSecondary">{message.message}</Typography>
-            </div>
-          </MenuItem>
-        ))}
-        <Fab
-          variant="extended"
-          color="primary"
-          aria-label="Add"
-          className={classes.sendMessageButton}
+              {messages.length} New Messages
+            </Typography>
+          </div>
+          {messages.map(message => (
+              <MenuItem key={message.id} className={classes.messageNotification}>
+                <div className={classes.messageNotificationSide}>
+                  <UserAvatar color={message.variant} name={message.name} />
+                  <Typography size="sm" color="textSecondary">
+                    {message.time}
+                  </Typography>
+                </div>
+                <div
+                    className={classNames(
+                        classes.messageNotificationSide,
+                        classes.messageNotificationBodySide
+                    )}
+                >
+                  <Typography weight="medium" gutterBottom>
+                    {message.name}
+                  </Typography>
+                  <Typography color="textSecondary">{message.message}</Typography>
+                </div>
+              </MenuItem>
+          ))}
+          <Fab
+              variant="extended"
+              color="primary"
+              aria-label="Add"
+              className={classes.sendMessageButton}
+          >
+            Send New Message
+            <SendIcon className={classes.sendButtonIcon} />
+          </Fab>
+        </Menu>
+        <Menu
+            id="notifications-menu"
+            open={Boolean(props.notificationsMenu)}
+            anchorEl={props.notificationsMenu}
+            onClose={props.closeNotificationsMenu}
+            className={classes.headerMenu}
+            disableAutoFocusItem
         >
-          Send New Message
-          <SendIcon className={classes.sendButtonIcon} />
-        </Fab>
-      </Menu>
-      <Menu
-        id="notifications-menu"
-        open={Boolean(props.notificationsMenu)}
-        anchorEl={props.notificationsMenu}
-        onClose={props.closeNotificationsMenu}
-        className={classes.headerMenu}
-        disableAutoFocusItem
-      >
-        {notifications.map(notification => (
+          {notifications.map(notification => (
+              <MenuItem
+                  key={notification.id}
+                  onClick={props.closeNotificationsMenu}
+                  className={classes.headerMenuItem}
+              >
+                <Notification {...notification} typographyVariant="inherit" />
+              </MenuItem>
+          ))}
+        </Menu>
+        <Menu
+            id="profile-menu"
+            open={Boolean(props.profileMenu)}
+            anchorEl={props.profileMenu}
+            onClose={props.closeProfileMenu}
+            className={classes.headerMenu}
+            classes={{ paper: classes.profileMenu }}
+            disableAutoFocusItem
+        >
+          <div className={classes.profileMenuUser}>
+            <Typography variant="h4" weight="medium">
+              John Smith
+            </Typography>
+            <Typography
+                className={classes.profileMenuLink}
+                component="a"
+                color="primary"
+                href="https://flatlogic.com"
+            >
+              Flalogic.com
+            </Typography>
+          </div>
           <MenuItem
-            key={notification.id}
-            onClick={props.closeNotificationsMenu}
-            className={classes.headerMenuItem}
+              className={classNames(
+                  classes.profileMenuItem,
+                  classes.headerMenuItem
+              )}
           >
-            <Notification {...notification} typographyVariant="inherit" />
+            <AccountIcon className={classes.profileMenuIcon} /> Profile
           </MenuItem>
-        ))}
-      </Menu>
-      <Menu
-        id="profile-menu"
-        open={Boolean(props.profileMenu)}
-        anchorEl={props.profileMenu}
-        onClose={props.closeProfileMenu}
-        className={classes.headerMenu}
-        classes={{ paper: classes.profileMenu }}
-        disableAutoFocusItem
-      >
-        <div className={classes.profileMenuUser}>
-          <Typography variant="h4" weight="medium">
-            John Smith
-          </Typography>
-          <Typography
-            className={classes.profileMenuLink}
-            component="a"
-            color="primary"
-            href="https://flatlogic.com"
+          <MenuItem
+              className={classNames(
+                  classes.profileMenuItem,
+                  classes.headerMenuItem
+              )}
           >
-            Flalogic.com
-          </Typography>
-        </div>
-        <MenuItem
-          className={classNames(
-            classes.profileMenuItem,
-            classes.headerMenuItem
-          )}
-        >
-          <AccountIcon className={classes.profileMenuIcon} /> Profile
-        </MenuItem>
-        <MenuItem
-          className={classNames(
-            classes.profileMenuItem,
-            classes.headerMenuItem
-          )}
-        >
-          <AccountIcon className={classes.profileMenuIcon} /> Tasks
-        </MenuItem>
-        <MenuItem
-          className={classNames(
-            classes.profileMenuItem,
-            classes.headerMenuItem
-          )}
-        >
-          <AccountIcon className={classes.profileMenuIcon} /> Messages
-        </MenuItem>
-        <div className={classes.profileMenuUser}>
-          <Typography
-            className={classes.profileMenuLink}
-            color="primary"
-            onClick={props.signOut}
+            <AccountIcon className={classes.profileMenuIcon} /> Tasks
+          </MenuItem>
+          <MenuItem
+              className={classNames(
+                  classes.profileMenuItem,
+                  classes.headerMenuItem
+              )}
           >
-            Sign Out
-          </Typography>
-        </div>
-      </Menu>
-    </Toolbar>
-  </AppBar>
+            <AccountIcon className={classes.profileMenuIcon} /> Messages
+          </MenuItem>
+          <div className={classes.profileMenuUser}>
+            <Typography
+                className={classes.profileMenuLink}
+                color="primary"
+                onClick={props.signOut}
+            >
+              Sign Out
+            </Typography>
+          </div>
+        </Menu>
+      </Toolbar>
+    </AppBar>
 );
 
 const styles = theme => ({
