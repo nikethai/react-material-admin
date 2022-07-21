@@ -105,57 +105,57 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>React Material Admin</Typography>
         <div className={classes.grow} />
-        <div
-            className={classNames(classes.search, {
-              [classes.searchFocused]: props.isSearchOpen
-            })}
-        >
-          <div
-              className={classNames(classes.searchIcon, {
-                [classes.searchIconOpened]: props.isSearchOpen
-              })}
-              onClick={props.toggleSearch}
-          >
-            <SearchIcon classes={{ root: classes.headerIcon }} />
-          </div>
-          <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-          />
-        </div>
-        <IconButton
-            color="inherit"
-            aria-haspopup="true"
-            aria-controls="mail-menu"
-            onClick={props.openNotificationsMenu}
-            className={classes.headerMenuButton}
-        >
-          <Badge
-              badgeContent={
-                props.isNotificationsUnread ? notifications.length : null
-              }
-              colortheme="warning"
-          >
-            <NotificationsIcon classes={{ root: classes.headerIcon }} />
-          </Badge>
-        </IconButton>
-        <IconButton
-            color="inherit"
-            aria-haspopup="true"
-            aria-controls="mail-menu"
-            onClick={props.openMailMenu}
-            className={classes.headerMenuButton}
-        >
-          <Badge
-              badgeContent={props.isMailsUnread ? messages.length : null}
-              color="secondary"
-          >
-            <MailIcon classes={{ root: classes.headerIcon }} />
-          </Badge>
-        </IconButton>
+        {/*<div*/}
+        {/*    className={classNames(classes.search, {*/}
+        {/*      [classes.searchFocused]: props.isSearchOpen*/}
+        {/*    })}*/}
+        {/*>*/}
+        {/*  <div*/}
+        {/*      className={classNames(classes.searchIcon, {*/}
+        {/*        [classes.searchIconOpened]: props.isSearchOpen*/}
+        {/*      })}*/}
+        {/*      onClick={props.toggleSearch}*/}
+        {/*  >*/}
+        {/*    <SearchIcon classes={{ root: classes.headerIcon }} />*/}
+        {/*  </div>*/}
+          {/*<InputBase*/}
+          {/*    placeholder="Search…"*/}
+          {/*    classes={{*/}
+          {/*      root: classes.inputRoot,*/}
+          {/*      input: classes.inputInput*/}
+          {/*    }}*/}
+          {/*/>*/}
+        {/*</div>*/}
+        {/*<IconButton*/}
+        {/*    color="inherit"*/}
+        {/*    aria-haspopup="true"*/}
+        {/*    aria-controls="mail-menu"*/}
+        {/*    onClick={props.openNotificationsMenu}*/}
+        {/*    className={classes.headerMenuButton}*/}
+        {/*>*/}
+        {/*  <Badge*/}
+        {/*      badgeContent={*/}
+        {/*        props.isNotificationsUnread ? notifications.length : null*/}
+        {/*      }*/}
+        {/*      colortheme="warning"*/}
+        {/*  >*/}
+        {/*    <NotificationsIcon classes={{ root: classes.headerIcon }} />*/}
+        {/*  </Badge>*/}
+        {/*</IconButton>*/}
+        {/*<IconButton*/}
+        {/*    color="inherit"*/}
+        {/*    aria-haspopup="true"*/}
+        {/*    aria-controls="mail-menu"*/}
+        {/*    onClick={props.openMailMenu}*/}
+        {/*    className={classes.headerMenuButton}*/}
+        {/*>*/}
+        {/*  <Badge*/}
+        {/*      badgeContent={props.isMailsUnread ? messages.length : null}*/}
+        {/*      color="secondary"*/}
+        {/*  >*/}
+        {/*    <MailIcon classes={{ root: classes.headerIcon }} />*/}
+        {/*  </Badge>*/}
+        {/*</IconButton>*/}
         <IconButton
             aria-haspopup="true"
             color="inherit"
@@ -165,77 +165,77 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         >
           <AccountIcon classes={{ root: classes.headerIcon }} />
         </IconButton>
-        <Menu
-            id="mail-menu"
-            open={Boolean(props.mailMenu)}
-            anchorEl={props.mailMenu}
-            onClose={props.closeMailMenu}
-            MenuListProps={{ className: classes.headerMenuList }}
-            className={classes.headerMenu}
-            classes={{ paper: classes.profileMenu }}
-            disableAutoFocusItem
-        >
-          <div className={classes.profileMenuUser}>
-            <Typography variant="h4" weight="medium">
-              New Messages
-            </Typography>
-            <Typography
-                className={classes.profileMenuLink}
-                component="a"
-                color="secondary"
-            >
-              {messages.length} New Messages
-            </Typography>
-          </div>
-          {messages.map(message => (
-              <MenuItem key={message.id} className={classes.messageNotification}>
-                <div className={classes.messageNotificationSide}>
-                  <UserAvatar color={message.variant} name={message.name} />
-                  <Typography size="sm" color="textSecondary">
-                    {message.time}
-                  </Typography>
-                </div>
-                <div
-                    className={classNames(
-                        classes.messageNotificationSide,
-                        classes.messageNotificationBodySide
-                    )}
-                >
-                  <Typography weight="medium" gutterBottom>
-                    {message.name}
-                  </Typography>
-                  <Typography color="textSecondary">{message.message}</Typography>
-                </div>
-              </MenuItem>
-          ))}
-          <Fab
-              variant="extended"
-              color="primary"
-              aria-label="Add"
-              className={classes.sendMessageButton}
-          >
-            Send New Message
-            <SendIcon className={classes.sendButtonIcon} />
-          </Fab>
-        </Menu>
-        <Menu
-            id="notifications-menu"
-            open={Boolean(props.notificationsMenu)}
-            anchorEl={props.notificationsMenu}
-            onClose={props.closeNotificationsMenu}
-            className={classes.headerMenu}
-            disableAutoFocusItem
-        >
-          {notifications.map(notification => (
-              <MenuItem
-                  key={notification.id}
-                  onClick={props.closeNotificationsMenu}
-                  className={classes.headerMenuItem}
-              >
-                <Notification {...notification} typographyVariant="inherit" />
-              </MenuItem>
-          ))}
-        </Menu>
+        {/*<Menu*/}
+        {/*    id="mail-menu"*/}
+        {/*    open={Boolean(props.mailMenu)}*/}
+        {/*    anchorEl={props.mailMenu}*/}
+        {/*    onClose={props.closeMailMenu}*/}
+        {/*    MenuListProps={{ className: classes.headerMenuList }}*/}
+        {/*    className={classes.headerMenu}*/}
+        {/*    classes={{ paper: classes.profileMenu }}*/}
+        {/*    disableAutoFocusItem*/}
+        {/*>*/}
+        {/*  <div className={classes.profileMenuUser}>*/}
+        {/*    <Typography variant="h4" weight="medium">*/}
+        {/*      New Messages*/}
+        {/*    </Typography>*/}
+        {/*    <Typography*/}
+        {/*        className={classes.profileMenuLink}*/}
+        {/*        component="a"*/}
+        {/*        color="secondary"*/}
+        {/*    >*/}
+        {/*      {messages.length} New Messages*/}
+        {/*    </Typography>*/}
+        {/*  </div>*/}
+        {/*  {messages.map(message => (*/}
+        {/*      <MenuItem key={message.id} className={classes.messageNotification}>*/}
+        {/*        <div className={classes.messageNotificationSide}>*/}
+        {/*          <UserAvatar color={message.variant} name={message.name} />*/}
+        {/*          <Typography size="sm" color="textSecondary">*/}
+        {/*            {message.time}*/}
+        {/*          </Typography>*/}
+        {/*        </div>*/}
+        {/*        <div*/}
+        {/*            className={classNames(*/}
+        {/*                classes.messageNotificationSide,*/}
+        {/*                classes.messageNotificationBodySide*/}
+        {/*            )}*/}
+        {/*        >*/}
+        {/*          <Typography weight="medium" gutterBottom>*/}
+        {/*            {message.name}*/}
+        {/*          </Typography>*/}
+        {/*          <Typography color="textSecondary">{message.message}</Typography>*/}
+        {/*        </div>*/}
+        {/*      </MenuItem>*/}
+        {/*  ))}*/}
+        {/*  <Fab*/}
+        {/*      variant="extended"*/}
+        {/*      color="primary"*/}
+        {/*      aria-label="Add"*/}
+        {/*      className={classes.sendMessageButton}*/}
+        {/*  >*/}
+        {/*    Send New Message*/}
+        {/*    <SendIcon className={classes.sendButtonIcon} />*/}
+        {/*  </Fab>*/}
+        {/*</Menu>*/}
+        {/*<Menu*/}
+        {/*    id="notifications-menu"*/}
+        {/*    open={Boolean(props.notificationsMenu)}*/}
+        {/*    anchorEl={props.notificationsMenu}*/}
+        {/*    onClose={props.closeNotificationsMenu}*/}
+        {/*    className={classes.headerMenu}*/}
+        {/*    disableAutoFocusItem*/}
+        {/*>*/}
+        {/*  {notifications.map(notification => (*/}
+        {/*      <MenuItem*/}
+        {/*          key={notification.id}*/}
+        {/*          onClick={props.closeNotificationsMenu}*/}
+        {/*          className={classes.headerMenuItem}*/}
+        {/*      >*/}
+        {/*        <Notification {...notification} typographyVariant="inherit" />*/}
+        {/*      </MenuItem>*/}
+        {/*  ))}*/}
+        {/*</Menu>*/}
         <Menu
             id="profile-menu"
             open={Boolean(props.profileMenu)}
@@ -247,7 +247,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         >
           <div className={classes.profileMenuUser}>
             <Typography variant="h4" weight="medium">
-              John Smith
+              Admin
             </Typography>
             <Typography
                 className={classes.profileMenuLink}
@@ -255,7 +255,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
                 color="primary"
                 href="https://flatlogic.com"
             >
-              Flalogic.com
+              FreelanceVN
             </Typography>
           </div>
           <MenuItem

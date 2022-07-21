@@ -156,7 +156,34 @@ const mock = {
       sđt: "0123456789",
       status: "Online"
     },
-  ]
+  ],
+  job:[
+    {
+      id: 0,
+      tên: "Hotel Management System",
+      status: "Done"
+    },
+    {
+      id: 1,
+      tên: "Bank Management System",
+      status: "Done"
+    },
+    {
+      id: 2,
+      tên: "Hostel Management System",
+      status: "Done"
+    },
+    {
+      id: 3,
+      tên: "Motel Management System",
+      status: "Done"
+    },
+    {
+      id: 4,
+      tên: "Rental Management System",
+      status: "Done"
+    },
+  ],
 };
 
 export default mock;
