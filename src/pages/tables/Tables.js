@@ -48,6 +48,10 @@ export default function Tables() {
                 columns={["Tên", "Email", "SĐT", "Status"]}
                 options={{
                   filterType: "checkbox",
+                  responsive: "stacked",
+                  filter: false,
+                  download: false,
+                  print: false,
                 }}
             />
           </Grid>
