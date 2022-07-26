@@ -48,6 +48,10 @@ export default function Jobs() {
                         columns={["Tên", "Miêu tả", "SĐT", "Status"]}
                         options={{
                             filterType: "checkbox",
+                            responsive: "stacked",
+                            filter: false,
+                            download: false,
+                            print: false,
                         }}
                     />
                 </Grid>
