@@ -29,7 +29,7 @@ import {
 } from "firebase/auth";
 import { login } from "../../api/Service/login";
 
-import { useStore } from "../../state";
+import { useUserStore } from "../../state";
 
 function Login(props) {
   var classes = useStyles();
@@ -38,7 +38,7 @@ function Login(props) {
   var userDispatch = useUserDispatch();
 
   // Zustand state
-  const { user, userLogin } = useStore();
+  const { user, userLogin } = useUserStore();
 
   // local
   var [isLoading, setIsLoading] = useState(false);
@@ -78,6 +78,14 @@ function Login(props) {
         userLogin(signinuser);
         console.log(user);
         localStorage.setItem("token", signinuser.jwt);
+        loginUser(
+          userDispatch,
+          loginValue,
+          passwordValue,
+          props.history,
+          setIsLoading,
+          setError,
+        );
         // navigate("/");
       } catch (error) {
         switch (error.messages[0].err_msg) {
@@ -124,16 +132,7 @@ function Login(props) {
                 Good Morning, User
               </Typography>
               <Button
-                onClick={() =>
-                  loginUser(
-                    userDispatch,
-                    loginValue,
-                    passwordValue,
-                    props.history,
-                    setIsLoading,
-                    setError,
-                  )
-                }
+                onClick={signIn}
                 size="large"
                 className={classes.googleButton}
               >

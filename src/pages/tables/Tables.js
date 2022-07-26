@@ -38,28 +38,22 @@ const useStyles = makeStyles((theme) => ({
 export default function Tables() {
   const classes = useStyles();
   return (
-      <>
-        <PageTitle title="Quản lý tài khoản" />
-        <Grid container spacing={4}>
-          <Grid item xs={12}>
-            <MUIDataTable
-                title="Danh sách tài khoản"
-                data={datatableData}
-                columns={["Tên", "Email", "SĐT", "Status"]}
-                options={{
-                  filterType: "checkbox",
-                  responsive: "stacked",
-                  filter: false,
-                  download: false,
-                  print: false,
-                }}
-            />
-          </Grid>
-          {/*<Grid item xs={12}>*/}
-          {/*  <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>*/}
-          {/*    <Table data={mock.table} />*/}
-          {/*  </Widget>*/}
-          {/*</Grid>*/}
+    <>
+      <PageTitle title="Quản lý tài khoản" />
+      <Grid container spacing={4}>
+        <Grid item xs={12}>
+          <MUIDataTable
+            title="Danh sách tài khoản"
+            data={datatableData}
+            columns={["Tên", "Email", "SĐT", "Status"]}
+            options={{
+              filterType: "checkbox",
+              responsive: "stacked",
+              filter: false,
+              download: false,
+              print: false,
+            }}
+          />
         </Grid>
         {/*<Grid item xs={12}>*/}
         {/*  <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>*/}
@@ -67,6 +61,11 @@ export default function Tables() {
         {/*  </Widget>*/}
         {/*</Grid>*/}
       </Grid>
+      {/*<Grid item xs={12}>*/}
+      {/*  <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>*/}
+      {/*    <Table data={mock.table} />*/}
+      {/*  </Widget>*/}
+      {/*</Grid>*/}
     </>
   );
 }
