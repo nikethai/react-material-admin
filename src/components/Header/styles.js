@@ -15,6 +15,7 @@ export default makeStyles(theme => ({
   },
   appBar: {
     width: "100vw",
+    // backgroundColor: "#09bf8b",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["margin"], {
       easing: theme.transitions.easing.sharp,
