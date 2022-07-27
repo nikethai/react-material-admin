@@ -5,6 +5,7 @@ export default makeStyles(theme => ({
     minHeight: "100%",
     display: "flex",
     flexDirection: "column",
+    flexWrap: "wrap"
   },
   visitsNumberContainer: {
     display: "flex",
@@ -126,5 +127,8 @@ export default makeStyles(theme => ({
   secondary: {
     backgroundColor: theme.palette.secondary.main,
     color: '#fff',
+  },
+  wrapHeader:{
+    flexWrap: "wrap",
   }
 }));

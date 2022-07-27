@@ -10,6 +10,7 @@ import { LayoutProvider } from "./context/LayoutContext";
 import { UserProvider } from "./context/UserContext";
 import { FirebaseAppProvider } from "reactfire";
 import { firebaseConfig } from "./firebase/firebaseconfig";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 ReactDOM.render(
   <LayoutProvider>
@@ -17,7 +18,9 @@ ReactDOM.render(
       <ThemeProvider theme={Themes.default}>
         <CssBaseline />
         <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-          <App />
+          <QueryClientProvider client={new QueryClient()}>
+            <App />
+          </QueryClientProvider>
         </FirebaseAppProvider>
       </ThemeProvider>
     </UserProvider>
