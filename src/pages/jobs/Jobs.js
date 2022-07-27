@@ -1,5 +1,5 @@
-import React from "react";
-import { Grid } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { CircularProgress, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
 
@@ -10,57 +10,99 @@ import Table from "../dashboard/components/Table/Table";
 
 // data
 import mock from "../dashboard/mock";
+import { useGetListJob } from "../../hook/job";
 
-const datatableData = [
-    ["Student Management System", "Hệ thống quản lý học sinh, sinh viên", "0123456789", "Active"],
-    ["Hospital Management System", "Hệ thống quản lý bệnh viện", "0123456789", "Active"],
-    ["Hotel Management System", "Hệ thống quản lý khách sạn", "0123456789", "Active"],
-    ["Storage Management System", "Hệ thống quản lý kho", "0123456789", "Active"],
-    ["Restaurant Management System", "Hệ thống quản lý nhà hàng", "0123456789", "Active"],
-    ["Gym Management System", "Hệ thống quản lý phòng gym", "0123456789", "Active"],
-    ["Retailer Management System", "Hệ thống quản lý bán lẻ", "0123456789", "Active"],
-    ["Parking Lot Management System", "Hệ thống quản lý bãi xe", "0123456789", "Active"],
-    ["Bank Management System", "Hệ thống quản lý ngân hàng", "0123456789", "Active"],
-    ["Real Estate Management System", "Hệ thống quản lý bất động sản", "0123456789", "Active"],
-    ["Apartment Management System", "Hệ thống quản lý căn hộ", "0123456789", "Active"],
-    ["Car Rental Management System", "Hệ thống quản lý thuê xe hơi", "0123456789", "Active"],
-    ["Motorcycle Management System", "Hệ thống quản lý thuê xe máy", "0123456789", "Active"],
-    ["Bike Rental Management System", "Hệ thống quản lý thuê xe đạp", "0123456789", "Active"],
-    ["Canteen Management System", "Hệ thống quản lý căn tin", "0123456789", "Active"],
+const states = {
+  PUBLISHED: "Đã đăng việc",
+  ACCEPTED: "Đang thực hiện",
+  DONE: "Đã hoàn thành",
+  BANNED: "Việc bị khoá",
+  REQUEST_FOR_COMPLETE: "Yêu cầu hoàn thành",
+};
+
+const columns = [
+  {
+    name: "title",
+    label: "Tên",
+    options: {},
+  },
+  {
+    name: "recruiter",
+    label: "Nhà tuyển dụng",
+    options: {},
+  },
+  {
+    name: "genre",
+    label: "Loại",
+    options: {},
+  },
+  {
+    name: "status",
+    label: "Trạng thái",
+    options: {
+      customBodyRender: (data) => {
+        return states[data];
+      },
+    },
+  },
 ];
 
-const useStyles = makeStyles(theme => ({
-    tableOverflow: {
-        overflow: 'auto'
-    }
-}))
+const useStyles = makeStyles((theme) => ({
+  tableOverflow: {
+    overflow: "auto",
+  },
+}));
 
 export default function Jobs() {
-    const classes = useStyles();
-    return (
-        <>
-            <PageTitle title="Quản lý bài đăng" />
-            <Grid container spacing={4}>
-                <Grid item xs={12}>
-                    <MUIDataTable
-                        title="Danh sách bài đăng"
-                        data={datatableData}
-                        columns={["Tên", "Miêu tả", "SĐT", "Status"]}
-                        options={{
-                            filterType: "checkbox",
-                            responsive: "stacked",
-                            filter: false,
-                            download: false,
-                            print: false,
-                        }}
-                    />
-                </Grid>
-                {/*<Grid item xs={12}>*/}
-                {/*  <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>*/}
-                {/*    <Table data={mock.table} />*/}
-                {/*  </Widget>*/}
-                {/*</Grid>*/}
-            </Grid>
-        </>
-    );
+  const classes = useStyles();
+  const [jobDataToShow, setJobDataToShow] = useState();
+
+  const { data, error, isLoading } = useGetListJob();
+
+  useEffect(() => {
+    if (data) {
+      const showJobList = data.data.map((j) => ({
+        // This is fckin bad, just for quick dev
+        // Pls dun do it like this
+        id: j.id,
+        title: j.title,
+        recruiter: j.recruiterName,
+        genre: j.genre.genreName,
+        status: j.jobStatusEnum,
+      }));
+      setJobDataToShow(showJobList);
+    }
+  }, [data]);
+
+  return (
+    <>
+      <PageTitle title="Quản lý bài đăng" />
+      <Grid container spacing={4}>
+        <Grid item xs={12}>
+          {isLoading && !data ? (
+            <CircularProgress color="secondary" />
+          ) : (
+            <MUIDataTable
+              title="Danh sách bài đăng"
+              data={jobDataToShow}
+              columns={columns}
+              options={{
+                count: data.totalCount,
+                page: data.pageNo,
+                rowsPerPage: data.pageSize,
+                rowsPerPageOptions: [],
+                filterType: "checkbox",
+                serverSide: true,
+                responsive: "stacked",
+                filter: false,
+                selectableRows: false,
+                download: false,
+                print: false,
+              }}
+            />
+          )}
+        </Grid>
+      </Grid>
+    </>
+  );
 }

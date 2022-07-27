@@ -39,6 +39,7 @@ import {
   useGetDoneJob,
   useGetJobPerMonth,
   useGetListJob,
+  useGetNewestJob,
 } from "../../hook/job";
 import { useGetRejectedOffers, useGetTotalOffers } from "../../hook/offer";
 import { useEffect } from "react";
@@ -63,7 +64,7 @@ export default function Dashboard(props) {
     data: listJobData,
     error: listJobError,
     isLoading: isListJobLoading,
-  } = useGetListJob();
+  } = useGetNewestJob();
 
   const {
     data: doneJobData,
@@ -91,7 +92,7 @@ export default function Dashboard(props) {
 
   useEffect(() => {
     if (listJobData) {
-      const showJobList = listJobData.data.map((j) => ({
+      const showJobList = listJobData.map((j) => ({
         // This is fckin bad, just for quick dev
         // Pls dun do it like this
         id: j.id,
@@ -120,7 +121,9 @@ export default function Dashboard(props) {
               <Grid container item alignItems={"center"}>
                 <Grid item xs={6}>
                   <Typography size="xl" weight="medium" noWrap>
-                    {!isTotalOfferLoading && totalOfferData.totalOffers}
+                    {!isTotalOfferLoading &&
+                      totalOfferData &&
+                      totalOfferData.totalOffers}
                   </Typography>
                   lượt
                 </Grid>
@@ -141,7 +144,9 @@ export default function Dashboard(props) {
               <Grid container item alignItems={"center"}>
                 <Grid item xs={6}>
                   <Typography size="xl" weight="medium" noWrap>
-                    {!isDoneJobLoading && doneJobData.totalFinishedJob}
+                    {!isDoneJobLoading &&
+                      doneJobData &&
+                      doneJobData.totalFinishedJob}
                   </Typography>
                   việc
                 </Grid>
@@ -162,6 +167,7 @@ export default function Dashboard(props) {
                 <Grid item xs={6}>
                   <Typography size="xl" weight="medium" noWrap>
                     {!isRejectedOfferLoading &&
+                      rejectedOfferData &&
                       rejectedOfferData.totalRejectedOffers}
                   </Typography>
                   chào giá
@@ -182,7 +188,9 @@ export default function Dashboard(props) {
               <Grid container item alignItems={"center"}>
                 <Grid item xs={6}>
                   <Typography size="xl" weight="medium" noWrap>
-                    {!isJobPerMonthLoading && jobPerMonthData.jobsPerMonth}
+                    {!isJobPerMonthLoading &&
+                      jobPerMonthData &&
+                      jobPerMonthData.jobsPerMonth}
                   </Typography>
                   việc
                 </Grid>
@@ -193,23 +201,12 @@ export default function Dashboard(props) {
 
         <Grid item xs={12}>
           <Widget
-            title="Bảng công việc"
+            title="Công việc mới nhất"
             upperTitle
             noBodyPadding
             bodyClass={classes.tableWidget}
           >
-            <JobTableComponent data={jobDataToShow } />
-          </Widget>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Widget
-            title="Thành viên nhóm"
-            upperTitle
-            noBodyPadding
-            bodyClass={classes.tableWidget}
-          >
-            <Table data={mock.table} />
+            <JobTableComponent data={jobDataToShow} />
           </Widget>
         </Grid>
       </Grid>

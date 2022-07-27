@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { CircularProgress, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
 
@@ -10,6 +10,7 @@ import Table from "../dashboard/components/Table/Table";
 
 // data
 import mock from "../dashboard/mock";
+import { useGetAllAccInfo } from "../../hook/account";
 
 const datatableData = [
   ["Nguyễn Thùy Linh", "linhnt@fpt.edu.vn", "0123456789", "Active"],
@@ -35,37 +36,62 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const columns = [
+  {
+    name: "fullName",
+    label: "Tên",
+    options: {},
+  },
+  {
+    name: "role",
+    label: "Loại tài khoản",
+    options: {
+      customBodyRender: (data) => {
+        return data.charAt(0).toUpperCase() + data.slice(1);
+      }
+    },
+  },
+  {
+    name: "phone",
+    label: "SĐT",
+    options: {},
+  },
+  {
+    name: "email",
+    label: "Email",
+    options: {},
+  },
+];
+
 export default function Tables() {
   const classes = useStyles();
+
+  const { data, error, isLoading } = useGetAllAccInfo();
+
   return (
     <>
       <PageTitle title="Quản lý tài khoản" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <MUIDataTable
-            title="Danh sách tài khoản"
-            data={datatableData}
-            columns={["Tên", "Email", "SĐT", "Status"]}
-            options={{
-              filterType: "checkbox",
-              responsive: "stacked",
-              filter: false,
-              download: false,
-              print: false,
-            }}
-          />
+          {isLoading && !data ? (
+            <CircularProgress />
+          ) : (
+            <MUIDataTable
+              title="Danh sách tài khoản"
+              data={data}
+              columns={columns}
+              options={{
+                filterType: "checkbox",
+                responsive: "stacked",
+                filter: false,
+                selectableRows: false,
+                download: false,
+                print: false,
+              }}
+            />
+          )}
         </Grid>
-        {/*<Grid item xs={12}>*/}
-        {/*  <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>*/}
-        {/*    <Table data={mock.table} />*/}
-        {/*  </Widget>*/}
-        {/*</Grid>*/}
       </Grid>
-      {/*<Grid item xs={12}>*/}
-      {/*  <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>*/}
-      {/*    <Table data={mock.table} />*/}
-      {/*  </Widget>*/}
-      {/*</Grid>*/}
     </>
   );
 }

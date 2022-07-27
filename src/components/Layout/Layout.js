@@ -101,7 +101,7 @@ function Layout(props) {
                 {/*  Blog*/}
                 {/*</Link>*/}
               </div>
-              <div>
+              {/* <div>
                 <Link
                     // href={'#'}
                     target={'_blank'}
@@ -141,7 +141,7 @@ function Layout(props) {
                     />
                   </IconButton>
                 </Link>
-              </div>
+              </div> */}
             </Box>
           </div>
         </>

@@ -10,7 +10,7 @@ import {
 import useStyles from "../../styles";
 
 const states = {
-  PUBLISHED: "Chưa xác nhận",
+  PUBLISHED: "Đã đăng việc",
   ACCEPTED: "Đang thực hiện",
   DONE: "Đã hoàn thành",
   BANNED: "Việc bị khoá",

@@ -1,4 +1,4 @@
-import { getFinishedJob, getJobPerMonth, getJobs } from "../api/Service/job";
+import { getFinishedJob, getJobPerMonth, getJobs, getNewestJob } from "../api/Service/job";
 
 const { useQuery } = require("react-query");
 
@@ -23,4 +23,11 @@ const useGetJobPerMonth = () => {
   return jobPerMonth;
 };
 
-export { useGetListJob, useGetDoneJob, useGetJobPerMonth };
+const useGetNewestJob = () => {
+  const newestJob = useQuery("newest-job", getNewestJob, {
+  staleTime: 60000,
+  });
+  return newestJob;
+};
+
+export { useGetListJob, useGetDoneJob, useGetJobPerMonth, useGetNewestJob };

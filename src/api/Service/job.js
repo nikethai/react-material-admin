@@ -18,4 +18,8 @@ const getJobs = async () => {
   });
 };
 
-export { getFinishedJob, getJobs, getJobPerMonth };
+const getNewestJob = async () => {
+  return await apiClient.get(Endpoints.JOB + "/newest");
+}
+
+export { getFinishedJob, getJobs, getJobPerMonth, getNewestJob };
