@@ -15,6 +15,7 @@ const states = {
   DONE: "Đã hoàn thành",
   BANNED: "Việc bị khoá",
   REQUEST_FOR_COMPLETE: "Yêu cầu hoàn thành",
+  EXPIRED: "Việc hết hạn",
 };
 
 const toVNeseKey = {
