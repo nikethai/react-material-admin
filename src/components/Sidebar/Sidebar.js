@@ -26,8 +26,8 @@ import {
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
-  { id: 2, label: "Quản lý tài khoản", link: "/app/tables", icon: <GroupIcon /> },
-  { id: 3, label: "Quản lý bài đăng", link: "/app/jobs", icon: <AssignmentIcon /> },
+  { id: 2, label: "Tài khoản", link: "/app/tables", icon: <GroupIcon /> },
+  { id: 3, label: "Bài đăng", link: "/app/jobs", icon: <AssignmentIcon /> },
 
 ];
 

@@ -70,7 +70,7 @@ export default function Tables() {
 
   return (
     <>
-      <PageTitle title="Quản lý tài khoản" />
+      <PageTitle title="Tài khoản" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
           {isLoading && !data ? (

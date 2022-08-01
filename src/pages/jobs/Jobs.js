@@ -77,7 +77,7 @@ export default function Jobs() {
 
   return (
     <>
-      <PageTitle title="Quản lý bài đăng" />
+      <PageTitle title="Bài đăng" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
           {isLoading && !data ? (
