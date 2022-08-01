@@ -93,13 +93,14 @@ function Login(props) {
       // console.log(idToken);
       if (idToken) {
         const signinuser = await login(idToken);
-        if (signinuser.role === "admin") {
+        if (signinuser.role !== "admin") {
           setMessage("Bạn không có quyền truy cập");
           setOpen(true);
           return;
         }
         userLogin(signinuser);
-        console.log(user);
+        // console.log(user);
+        localStorage.setItem("user", JSON.stringify(signinuser));
         localStorage.setItem("token", signinuser.jwt);
         loginUser(
           userDispatch,

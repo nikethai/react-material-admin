@@ -35,6 +35,7 @@ import {
   toggleSidebar,
 } from "../../context/LayoutContext";
 import { useUserDispatch, signOut } from "../../context/UserContext";
+import { useHistory } from "react-router-dom";
 
 const messages = [
   {
@@ -96,6 +97,7 @@ export default function Header(props) {
   var layoutState = useLayoutState();
   var layoutDispatch = useLayoutDispatch();
   var userDispatch = useUserDispatch();
+  const history = useHistory();
 
   // local
   var [mailMenu, setMailMenu] = useState(null);
@@ -295,15 +297,19 @@ export default function Header(props) {
               FreelanceVN Admin
             </Typography>
           </div>
+          <MenuItem
+            className={classNames(
+              classes.profileMenuItem,
+              classes.headerMenuItem,
+            )}
+            onClick={() => {
+              history.push("/app/profile");
+            }}
+          >
+            <AccountIcon className={classes.profileMenuIcon} /> Thông tin cá
+            nhân
+          </MenuItem>
           {/* <MenuItem
-                className={classNames(
-                    classes.profileMenuItem,
-                    classes.headerMenuItem,
-                )}
-            >
-              <AccountIcon className={classes.profileMenuIcon} /> Profile
-            </MenuItem>
-            <MenuItem
                 className={classNames(
                     classes.profileMenuItem,
                     classes.headerMenuItem,
